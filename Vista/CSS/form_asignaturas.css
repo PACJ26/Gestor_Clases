@@ -1,0 +1,149 @@
+/* Estilos generales */
+body {
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Estilos del título */
+h2 {
+    font-size: 2rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Estilos de los card */
+.card {
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de los títulos dentro de los cards */
+.card h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Espaciado dentro de los cards */
+.card p {
+    font-size: 1rem;
+    color: #777;
+}
+
+/* Estilos del formulario */
+.card form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos */
+    text-align: center; /* Asegura que los elementos dentro del formulario estén centrados */
+}
+
+/* Estilos del input */
+.form-control {
+    font-size: 0.9rem;
+    border: 1px solid #ddd;
+}
+
+/* Estilo para los márgenes */
+.mb-4 {
+    margin-bottom: 30px;
+}
+
+.mt-5 {
+    margin-top: 50px;
+}
+
+.mt-3 {
+    margin-top: 20px;
+}
+
+/* Estilos de los botones */
+.btn {
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border-radius: 30px;
+}
+
+/* Estilo para el botón registrar */
+.btn-success {
+    display: inline-flex;
+    background: #FFD700;
+    color: #333;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background: #FFC107;
+    color: #222;
+    transform: scale(1.05);
+}
+
+/* Estilo de los botones de acción en la tabla */
+.btn-warning {
+    background-color: #f39c12;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn-warning:hover {
+    background-color: #e67e22;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+/* Estilos de la tabla */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: left;
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #ddd;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.table-dark th {
+    background-color: #343a40;
+    color: white;
+}
+
+.table-dark td {
+    background-color: #f1f1f1;
+}
+
+/* Estilo de la fila de la tabla cuando se pasa el mouse por encima */
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
