@@ -50,6 +50,7 @@ $asignatura = $resultado->fetch_assoc();
     <div class="card">
         <h4 class="text-center mb-3">Modificar Asignatura</h4>
         <form action="../Controladores/actualizar_asignatura.php" method="POST">
+            <input type="hidden" name="id" value="<?= $asignatura['id'] ?>">
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Nombre de la Asignatura</label>
@@ -58,7 +59,7 @@ $asignatura = $resultado->fetch_assoc();
             </div>
             <div class="text-center p-3">
                 <button type="submit" class="btn btn-primary">Actualizar</button>
-                <a href="registrar_asignatura.php" class="btn btn-secondary">Cancelar</a>
+                <a href="registrar_asignaturas.php" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>
