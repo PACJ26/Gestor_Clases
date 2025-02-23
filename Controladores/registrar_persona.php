@@ -48,10 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $verificar->close();
     $conexion->close();
     
-    header("Location: ../Vista/registro_usuario.php");
+    header("Location: ../Vista/registrar_usuario.php");
     exit();
 } else {
-    header("Location: ../Vista/registro_usuario.php");
+    header("Location: ../Vista/registra_usuario.php");
     exit();
 }
 ?>
