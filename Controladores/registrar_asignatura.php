@@ -39,9 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conexion->close();
 
     // Redirigir a la vista de asignaturas
-    header("Location: ../Vista/asignaturas.php");
+    header("Location: ../Vista/registrar_asignaturas.php");
     exit();
 } else {
-    header("Location: ../Vista/asignaturas.php");
+    header("Location: ../Vista/registrar_asignaturas.php");
     exit();
 }
