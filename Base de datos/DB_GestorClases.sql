@@ -48,3 +48,23 @@ foreign key (estudiante_id) references usuarios(id),
 foreign key (clase_id)references clases(id)
 );
 
+/*consultas*/
+ALTER TABLE clases ADD COLUMN hora_fin TIME NOT NULL AFTER hora;
+
+SELECT c.id, a.nombre as asignatura, c.fecha, c.hora, c.hora_fin, u.nombres as profesor 
+        FROM clases c
+        INNER JOIN asignaturas a ON c.asignatura_id = a.id 
+        INNER JOIN usuarios u ON c.profesor_id = u.id;
+        
+DESCRIBE clases;
+
+
+
+
+        
+
+
+
+
+
+
