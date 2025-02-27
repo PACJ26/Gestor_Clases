@@ -41,8 +41,8 @@ $rol = "Estudiante";
     <div class="content">
         <h2 class="text-center">Panel de Docente</h2>
         <div class="content">
-            <a href="mis_clases.php" class="btn btn-primary w-100 mb-2">Mis Clases</a>
-            <a href="mis_calificaciones.php" class="btn btn-success w-100 mb-2">Mis Calificaciones</a>
+            <a href="clases.php" class="btn btn-success p-4">Ver Calendario</a>
+            <a href="mis_calificaciones.php" class="btn btn-success p-4">Mis Calificaciones</a>
         </div>
     </div>
 

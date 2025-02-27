@@ -9,7 +9,7 @@ if (!isset($_SESSION["usuario"]) || $_SESSION["usuario"]["rol"] != 2) {
 
 $nombre = $_SESSION["usuario"]["nombre"];
 $apellido = $_SESSION["usuario"]["apellido"];
-$rol = "Profesor"; 
+$rol = "Profesor";
 ?>
 
 <!DOCTYPE html>
@@ -41,8 +41,8 @@ $rol = "Profesor";
     <div class="content">
         <h2 class="text-center">Panel de Docente</h2>
         <div class="content">
-            <a href="ver_clases.php" class="btn btn-primary">Ver Clases</a>
-            <a href="gestionar_notas.php" class="btn btn-success">Gestionar Notas</a>
+            <a href="clases.php" class="btn btn-success p-4">Ver Calendario</a>
+            <a href="gestionar_notas.php" class="btn btn-success p-4">Gestionar Notas</a>
         </div>
     </div>
 
