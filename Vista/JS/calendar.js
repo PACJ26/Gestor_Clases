@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         selectable: true,
         events: '../Controladores/obtener_clases.php',
 
-        eventDidMount: function(info) {
+        eventDidMount: function (info) {
             let horaInicio = info.event.start.toLocaleTimeString([], {
                 hour: '2-digit',
                 minute: '2-digit'
@@ -22,13 +22,13 @@ document.addEventListener('DOMContentLoaded', function() {
             info.el.innerHTML = `<b>${info.event.title}</b><br>${horaInicio} - ${horaFin}`;
         },
 
-        dateClick: function(info) {
+        dateClick: function (info) {
             document.getElementById('fecha').value = info.dateStr;
             var myModal = new bootstrap.Modal(document.getElementById('modalAgregarClase'));
             myModal.show();
         },
 
-        eventClick: function(info) {
+        eventClick: function (info) {
             let id = info.event.id;
             let fecha = info.event.startStr.split("T")[0];
             let hora = info.event.startStr.split("T")[1]?.substring(0, 5);
@@ -44,34 +44,43 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    document.getElementById("formAgregarClase").addEventListener("submit", function(event) {
+    document.getElementById("formAgregarClase").addEventListener("submit", function (event) {
         event.preventDefault();
         var formData = new FormData(this);
 
         fetch("../Controladores/guardar_clase.php", {
-                method: "POST",
-                body: formData
-            })
+            method: "POST",
+            body: formData
+        })
             .then(response => response.json())
             .then(data => {
                 if (data.status === "success") {
-                    alert("Clase registrada con éxito");
-                    location.reload();
+                    iziToast.success({
+                        title: "Éxito",
+                        message: "Clase registrada con éxito",
+                        position: "topRight"
+                    });
+                    setTimeout(() => location.reload(), 2000);
                 } else {
-                    alert("Error al registrar la clase");
+                    iziToast.error({
+                        title: "Error",
+                        message: "Error al registrar la clase",
+                        position: "topRight"
+                    });
                 }
             })
             .catch(error => console.error("Error:", error));
     });
 
-    document.getElementById("formEditarClase").addEventListener("submit", function(event) {
+
+    document.getElementById("formEditarClase").addEventListener("submit", function (event) {
         event.preventDefault();
         var formData = new FormData(this);
 
         fetch("../Controladores/editar_clase.php", {
-                method: "POST",
-                body: formData
-            })
+            method: "POST",
+            body: formData
+        })
             .then(response => response.json())
             .then(data => {
                 if (data.status === "success") {
@@ -84,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error("Error:", error));
     });
 
-    document.getElementById("btnEliminar").addEventListener("click", function() {
+    document.getElementById("btnEliminar").addEventListener("click", function () {
         if (!confirm("¿Estás seguro de eliminar esta clase?")) {
             return;
         }
@@ -92,11 +101,11 @@ document.addEventListener('DOMContentLoaded', function() {
         var id = document.getElementById("edit_id").value;
 
         fetch("../Controladores/eliminar_clase.php", {
-                method: "POST",
-                body: new URLSearchParams({
-                    id: id
-                })
+            method: "POST",
+            body: new URLSearchParams({
+                id: id
             })
+        })
             .then(response => response.json())
             .then(data => {
                 if (data.status === "success") {
