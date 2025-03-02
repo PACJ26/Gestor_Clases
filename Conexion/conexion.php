@@ -1,6 +1,6 @@
 <?php
 
-$servername = "localhost";
+$servername = "localhost:3307";
 $username = "root";
 $password = "123456";
 $dbname = "gestor_clases";
