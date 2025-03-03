@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 if (data.status === "success") {
                     alert("Clase registrada con éxito");
-                    location.reload(); 
+                    location.reload();
                 } else {
                     alert("Error al registrar la clase");
                 }
