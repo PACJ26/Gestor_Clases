@@ -46,27 +46,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById("formAgregarClase").addEventListener("submit", function (event) {
         event.preventDefault();
+
         var formData = new FormData(this);
 
-        fetch("../Controladores/guardar_clase.php", {
+        fetch("guardar_clase.php", {
             method: "POST",
             body: formData
         })
             .then(response => response.json())
             .then(data => {
                 if (data.status === "success") {
-                    iziToast.success({
-                        title: "Éxito",
-                        message: "Clase registrada con éxito",
-                        position: "topRight"
-                    });
-                    setTimeout(() => location.reload(), 2000);
+                    alert("Clase registrada con éxito");
+                    location.reload(); 
                 } else {
-                    iziToast.error({
-                        title: "Error",
-                        message: "Error al registrar la clase",
-                        position: "topRight"
-                    });
+                    alert("Error al registrar la clase");
                 }
             })
             .catch(error => console.error("Error:", error));

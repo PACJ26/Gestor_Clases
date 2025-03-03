@@ -17,8 +17,6 @@ if (!isset($_SESSION['usuario'])) {
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
-    <!--izitoast-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
 
     <!-- FullCalendar CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
@@ -131,8 +129,7 @@ if (!isset($_SESSION['usuario'])) {
         }
     </style>
 
-    <!--izitoast-->
-    <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -142,25 +139,8 @@ if (!isset($_SESSION['usuario'])) {
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.js"></script>
 
     <script src="../Vista/JS/config_sesion.js"></script>
-
-    <!--Calendar-->
     <script src="../Vista/JS/calendar.js"></script>
 
-    <script>
-        <?php if (isset($_SESSION['mensaje'])): ?>
-            iziToast.<?= $_SESSION['mensaje']['tipo'] ?>({
-                title: "Mensaje",
-                message: "<?= $_SESSION['mensaje']['texto'] ?>",
-                position: "topRight",
-                timeout: 5000,
-                backgroundColor: "<?= ($_SESSION['mensaje']['tipo'] == 'error') ? '#b33c3c' : '#33a658' ?>",
-                icon: "fas <?= ($_SESSION['mensaje']['tipo'] == 'error') ? 'fa-times-circle' : 'fa-check-circle' ?>",
-                transitionIn: "bounceInLeft",
-                transitionOut: "fadeOutRight"
-            });
-            <?php unset($_SESSION['mensaje']); ?>
-        <?php endif; ?>
-    </script>
 
 
 </body>
