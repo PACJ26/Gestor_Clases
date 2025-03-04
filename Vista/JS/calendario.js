@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
             info.el.classList.add("evento-centrado");
+            //sin br.
             info.el.innerHTML = `<b>${info.event.title}</b><b>${horaInicio} - ${horaFin}</b>`;
         },
 
