@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     alert("Clase eliminada correctamente");
                     location.reload();
                 } else {
-                    alert(data.message); // Mostrar el mensaje recibido del servidor
+                    alert(data.message); 
                 }
             })
             .catch(error => console.error("Error:", error));
