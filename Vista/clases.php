@@ -101,6 +101,7 @@ if (!isset($_SESSION['usuario'])) {
                         </div>
                         <button type="submit" class="btn btn-success">Actualizar</button>
                         <button type="button" class="btn btn-danger" id="btnEliminar">Eliminar</button>
+                        <button id="btnCancelarClase" class="btn btn-warning">Cancelar Clase</button>
                     </form>
                 </div>
             </div>
