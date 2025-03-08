@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         selectable: true,
         events: '../Controladores/obtener_clases.php',
 
+
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
@@ -30,8 +31,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 buttonText: 'Mes'
             }
         },
+        dayMaxEventRows: true,
+        height: 'auto',
 
         eventDidMount: function (info) {
+
+            info.el.style.backgroundColor = info.event.backgroundColor;
+            info.el.style.borderColor = info.event.borderColor;
+            info.el.style.color = "#000000";
+
             let horaInicio = info.event.start.toLocaleTimeString([], {
                 hour: '2-digit',
                 minute: '2-digit'
@@ -41,9 +49,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 minute: '2-digit'
             }) : "";
 
+
             info.el.classList.add("evento-centrado");
             info.el.innerHTML = `<b>${info.event.title}</b>${horaInicio} - ${horaFin}`;
         },
+
+
 
         dateClick: function (info) {
             document.getElementById('fecha').value = info.dateStr;
@@ -126,11 +137,35 @@ document.addEventListener('DOMContentLoaded', function () {
                     alert("Clase eliminada correctamente");
                     location.reload();
                 } else {
-                    alert("Error al eliminar la clase");
+                    alert(data.message); // Mostrar el mensaje recibido del servidor
                 }
             })
             .catch(error => console.error("Error:", error));
     });
+
+    document.getElementById("btnCancelarClase").addEventListener("click", function () {
+        if (!confirm("¿Estás seguro de cancelar esta clase?")) {
+            return;
+        }
+
+        var id = document.getElementById("edit_id").value;
+
+        fetch("../Controladores/cancelar_clase.php", {
+            method: "POST",
+            body: new URLSearchParams({ id: id })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    alert("Clase cancelada correctamente.");
+                    location.reload();
+                } else {
+                    alert("Error al cancelar la clase.");
+                }
+            })
+            .catch(error => console.error("Error:", error));
+    });
+
 
     calendar.render();
 });
