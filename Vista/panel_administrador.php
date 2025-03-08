@@ -44,6 +44,7 @@ $rol = "Administrador";
             <a href="registrar_asignaturas.php" class="btn btn-success p-4">Registrar Asignatura</a>
             <a href="listar_usuarios.php" class="btn btn-success p-4">Listar Usuarios</a>
             <a href="clases.php" class="btn btn-success p-4">Ver Calendario</a>
+            <a href="asignar_estudiantes.php" class="btn btn-success p-4">Asignar Clases</a>
         </div>
     </div>
     <!--izitoast-->
