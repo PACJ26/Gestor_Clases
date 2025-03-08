@@ -49,14 +49,39 @@ foreign key (clase_id)references clases(id)
 );
 
 /*consultas*/
+/*se agrega columna para guardar hora fin de la clase*/
 ALTER TABLE clases ADD COLUMN hora_fin TIME NOT NULL AFTER hora;
 
-SELECT c.id, a.nombre as asignatura, c.fecha, c.hora, c.hora_fin, u.nombres as profesor 
+/*muestra la asignatura, fecha, hora, hora fin y el profesor para obtener las clases y el estado
+(activa/cancelada).*/
+
+SELECT c.id, a.nombre as asignatura, c.fecha, c.hora, c.hora_fin, c.estado, u.nombres as profesor 
         FROM clases c
         INNER JOIN asignaturas a ON c.asignatura_id = a.id 
         INNER JOIN usuarios u ON c.profesor_id = u.id;
         
-DESCRIBE clases;
+/*DESCRIBE clases;*/
+
+/*se usa para mostrar las clases creadas y asi poder asignarle estudiantes*/
+SELECT c.id, a.nombre as asignatura, c.fecha, c.hora, c.hora_fin, u.nombres as profesor
+               FROM clases c
+               INNER JOIN asignaturas a ON c.asignatura_id = a.id
+               INNER JOIN usuarios u ON c.profesor_id = u.id;
+
+/*se agrega columna estado para las clases activa o cancelada*/
+alter table clases add column estado enum('activa', 'cancelada') not null default 'activa';
+
+/*muestra con cantidad de estudiantes*/
+SELECT 		c.id, 
+            a.nombre as asignatura, 
+            c.fecha, 
+            c.hora, 
+            c.hora_fin, 
+            u.nombres as profesor,
+            (SELECT COUNT(*) FROM inscripciones WHERE clase_id = c.id) as estudiantes
+        FROM clases c
+        INNER JOIN asignaturas a ON c.asignatura_id = a.id 
+        INNER JOIN usuarios u ON c.profesor_id = u.id;
 
 
 
