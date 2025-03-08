@@ -1,13 +1,4 @@
 .evento-centrado {
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 100%;
     font-size: 12px;
-    padding: 5px;
-    border-radius: 5px;
-    color: white;
-    background-color: #007bff;
 }
