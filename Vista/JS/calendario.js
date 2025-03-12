@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var calendar = new FullCalendar.Calendar(calendarEl, {
         locale: 'es',
         initialView: 'dayGridMonth',
-        editable: true,
-        selectable: true,
+        editable: usuarioRol === 1,
+        selectable: usuarioRol === 1,
         events: '../Controladores/obtener_clases.php',
 
 
@@ -57,26 +57,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         dateClick: function (info) {
-            document.getElementById('fecha').value = info.dateStr;
-            var myModal = new bootstrap.Modal(document.getElementById('modalAgregarClase'));
-            myModal.show();
+            if (usuarioRol === 1) { // admin
+                document.getElementById('fecha').value = info.dateStr;
+                var myModal = new bootstrap.Modal(document.getElementById('modalAgregarClase'));
+                myModal.show();
+            }
         },
 
+
         eventClick: function (info) {
-            let id = info.event.id;
-            let fecha = info.event.startStr.split("T")[0];
-            let hora = info.event.startStr.split("T")[1]?.substring(0, 5);
-            let hora_fin = info.event.endStr.split("T")[1]?.substring(0, 5);
+            if (usuarioRol === 1) { 
+                let id = info.event.id;
+                let fecha = info.event.startStr.split("T")[0];
+                let hora = info.event.startStr.split("T")[1]?.substring(0, 5);
+                let hora_fin = info.event.endStr.split("T")[1]?.substring(0, 5);
 
-            document.getElementById("edit_id").value = id;
-            document.getElementById("edit_fecha").value = fecha;
-            document.getElementById("edit_hora").value = hora;
-            document.getElementById("edit_hora_fin").value = hora_fin;
+                document.getElementById("edit_id").value = id;
+                document.getElementById("edit_fecha").value = fecha;
+                document.getElementById("edit_hora").value = hora;
+                document.getElementById("edit_hora_fin").value = hora_fin;
 
-            var myModal = new bootstrap.Modal(document.getElementById("modalEditarClase"));
-            myModal.show();
+                var myModal = new bootstrap.Modal(document.getElementById("modalEditarClase"));
+                myModal.show();
+            }
         }
     });
+
+    // Ocultar botones 
+    if (usuarioRol !== 1) {
+        document.getElementById("modalAgregarClase").style.display = "none";
+        document.getElementById("modalEditarClase").style.display = "none";
+    }
+
 
     document.getElementById("formAgregarClase").addEventListener("submit", function (event) {
         event.preventDefault();
@@ -137,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     alert("Clase eliminada correctamente");
                     location.reload();
                 } else {
-                    alert(data.message); 
+                    alert(data.message);
                 }
             })
             .catch(error => console.error("Error:", error));
