@@ -28,7 +28,7 @@ session_start();
                 <label class="form-label">Contraseña:</label>
                 <input type="password" name="contraseña" class="form-control" required>
             </div>
-            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+            <button type="submit" class="btn btn-yellow">Iniciar Sesión</button>
         </form>
     </div>
 
