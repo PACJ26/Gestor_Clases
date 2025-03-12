@@ -83,6 +83,22 @@ SELECT 		c.id,
         INNER JOIN asignaturas a ON c.asignatura_id = a.id 
         INNER JOIN usuarios u ON c.profesor_id = u.id;
 
+SELECT c.id, a.nombre as asignatura, c.fecha, c.hora, c.hora_fin, c.estado, u.nombres as profesor 
+            FROM clases c
+            INNER JOIN asignaturas a ON c.asignatura_id = a.id 
+            INNER JOIN usuarios u ON c.profesor_id = u.id
+            WHERE c.profesor_id = '11';
+            
+SELECT c.id, a.nombre as asignatura, c.fecha, c.hora, c.hora_fin, c.estado, u.nombres as profesor 
+            FROM clases c
+            INNER JOIN asignaturas a ON c.asignatura_id = a.id 
+            INNER JOIN usuarios u ON c.profesor_id = u.id
+            INNER JOIN inscripciones i ON c.id = i.clase_id
+            WHERE i.estudiante_id ='15';
+            
+
+
+
 
 
 
