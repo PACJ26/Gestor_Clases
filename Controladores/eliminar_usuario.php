@@ -23,10 +23,10 @@ if (isset($_GET['id'])) {
     $stmt->close();
     $conexion->close();
 
-    header("Location: ../Vista/listar_usuarios.php");
+    header("Location: ../Vista/usuarios_registrados.php");
     exit();
 } else {
-    header("Location: ../Vista/listar_usuarios.php");
+    header("Location: ../Vista/usuarios_registrados.php");
     exit();
 }
 ?>
