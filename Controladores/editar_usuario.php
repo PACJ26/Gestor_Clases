@@ -46,9 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conexion->close();
 
     // Redirigir de nuevo a la lista de usuarios
-    header("Location: ../Vista/listar_usuarios.php");
+    header("Location: ../Vista/usuarios_registrados.php");
     exit();
 } else {
-    header("Location: ../Vista/listar_usuarios.php");
+    header("Location: ../Vista/usuarios_registrados.php");
     exit();
 }
