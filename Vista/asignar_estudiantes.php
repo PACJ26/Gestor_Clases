@@ -107,6 +107,7 @@ $resultado_estudiantes = $conexion->query($sql_estudiantes);
     <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../Vista/JS/config_sesion.js"></script>
     <script>
         function confirmarEliminacion(inscripcion_id) {
             iziToast.question({
