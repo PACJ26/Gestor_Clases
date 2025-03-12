@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Verificar si el usuario está autenticado y es administrador
 if (!isset($_SESSION["usuario"]) || $_SESSION["usuario"]["rol"] != 2) {
     header("Location: index.php");
     exit();
@@ -23,7 +22,9 @@ $rol = "Profesor";
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <!--izitoast-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
-    <link rel="stylesheet" href="CSS/form_administrador.css">
+    <!--ICONOS-->
+    <script src="https://kit.fontawesome.com/fb9c53fb4c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="CSS/paneles.css">
 </head>
 
 <body>
@@ -38,11 +39,13 @@ $rol = "Profesor";
         </div>
     </div>
 
-    <div class="content">
-        <h2 class="text-center">Panel de Docente</h2>
-        <div class="content">
-            <a href="clases.php" class="btn btn-success p-4">Ver Calendario</a>
-            <a href="gestionar_notas.php" class="btn btn-success p-4">Gestionar Notas</a>
+    <div class="container text-center">
+        <h2 class="text-center mb-4">Panel de Docente</h2>
+        <div class="d-flex flex-wrap justify-content-center gap-4">
+            <a href="clases.php" class="btn btn-yellow p-4 text-center d-flex flex-column align-items-center">
+                <i class="fa-solid fa-calendar-days fa-2x"></i>
+                <span class="mt-2">Ver Calendario</span>
+            </a>
         </div>
     </div>
 

@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <!--izitoast-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
-    <link rel="stylesheet" href="CSS/listar_usuarios.css">
+    <link rel="stylesheet" href="CSS/usuarios_registrados.css">
     <title>Listado de Usuarios</title>
 </head>
 
 <body>
     <div class="container mt-5">
-        <h2 class="text-center">Gestión de Usuarios</h2>
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered">
+            <h2 class="text-center">Gestión de Usuarios</h2>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -51,6 +51,9 @@
                 <?php } ?>
             </tbody>
         </table>
+        <div class="text-center">
+            <a href="panel_administrador.php" class="btn btn-yellow">Volver</a>
+        </div>
     </div>
     <!--izitoast-->
     <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>

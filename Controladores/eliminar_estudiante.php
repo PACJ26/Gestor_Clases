@@ -3,21 +3,22 @@ session_start();
 include("../Conexion/conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $clase_id = $_POST["clase_id"];
+    $inscripcion_id = $_POST["inscripcion_id"];
 
-    // Eliminar todas las inscripciones de la clase seleccionada
-    $sql_delete = "DELETE FROM inscripciones WHERE clase_id = ?";
+    // Eliminar la inscripción de un estudiante en una clase específica
+    $sql_delete = "DELETE FROM inscripciones WHERE id = ?";
     $stmt = $conexion->prepare($sql_delete);
-    $stmt->bind_param("i", $clase_id);
+    $stmt->bind_param("i", $inscripcion_id);
+
     if ($stmt->execute()) {
         $_SESSION['mensaje'] = [
             'tipo' => 'success',
-            'texto' => 'Se han eliminado todos los estudiantes de la clase.'
+            'texto' => 'El estudiante ha sido eliminado de la clase.'
         ];
     } else {
         $_SESSION['mensaje'] = [
             'tipo' => 'error',
-            'texto' => 'No se pudo eliminar a los estudiantes.'
+            'texto' => 'No se pudo eliminar al estudiante.'
         ];
     }
 

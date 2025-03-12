@@ -24,7 +24,7 @@ $rol = $_SESSION['usuario']['rol'];
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
     <!-- FullCalendar CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
-    <link rel="stylesheet" href="../Vista/CSS/calendar.css">
+    <link rel="stylesheet" href="../Vista/CSS/calendario.css">
 </head>
 
 <body>
@@ -44,17 +44,17 @@ $rol = $_SESSION['usuario']['rol'];
                             <input type="date" class="form-control" id="fecha" name="fecha" readonly>
                         </div>
                         <div class="mb-3">
-                            <label for="hora" class="form-label">Hora</label>
+                            <label for="hora" class="form-label">Hora de Inicio</label>
                             <input type="time" class="form-control" id="hora" name="hora" required>
                         </div>
                         <div class="mb-3">
-                            <label for="hora_fin">Hora de Finalización:</label>
+                            <label for="hora_fin">Hora de Finalización</label>
                             <input type="time" class="form-control" name="hora_fin" id="hora_fin" required>
                         </div>
                         <div class="mb-3">
                             <label for="asignatura" class="form-label">Asignatura</label>
                             <select class="form-control" id="asignatura" name="asignatura" required>
-                                <option value="">Seleccione una asignatura</option>
+                                <option value="">Seleccione asignatura</option>
                                 <?php
                                 include("../Conexion/conexion.php");
                                 $resultado = $conexion->query("SELECT id, nombre FROM asignaturas");
@@ -67,7 +67,7 @@ $rol = $_SESSION['usuario']['rol'];
                         <div class="mb-3">
                             <label for="profesor" class="form-label">Profesor</label>
                             <select class="form-control" id="profesor" name="profesor" required>
-                                <option value="">Seleccione un profesor</option>
+                                <option value="">Seleccione profesor</option>
                                 <?php
                                 $resultado = $conexion->query("SELECT id, nombres FROM usuarios WHERE rol_id = 2");
                                 while ($fila = $resultado->fetch_assoc()) {
@@ -76,7 +76,7 @@ $rol = $_SESSION['usuario']['rol'];
                                 ?>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Guardar Clase</button>
+                        <button type="submit" class="btn btn-yellow">Guardar Clase</button>
                     </form>
                 </div>
             </div>
@@ -98,16 +98,16 @@ $rol = $_SESSION['usuario']['rol'];
                             <input type="date" class="form-control" id="edit_fecha" name="fecha" required>
                         </div>
                         <div class="mb-3">
-                            <label for="edit_hora" class="form-label">Hora</label>
+                            <label for="edit_hora" class="form-label">Hora de Inicio </label>
                             <input type="time" class="form-control" id="edit_hora" name="hora" required>
                         </div>
                         <div class="mb-3">
-                            <label for="hora_fin">Hora de Finalización:</label>
+                            <label for="hora_fin">Hora de Finalización </label>
                             <input type="time" class="form-control" name="hora_fin" id="edit_hora_fin" required>
                         </div>
-                        <button type="submit" class="btn btn-success">Actualizar</button>
-                        <button type="button" class="btn btn-danger" id="btnEliminar">Eliminar</button>
-                        <button id="btnCancelarClase" class="btn btn-warning">Cancelar Clase</button>
+                        <button type="submit" class="btn btn-yellow">Actualizar</button>
+                        <button type="button" class="btn btn-yellow" id="btnEliminar">Eliminar</button>
+                        <button id="btnCancelarClase" class="btn btn-yellow">Cancelar Clase</button>
                     </form>
                 </div>
             </div>
@@ -119,6 +119,19 @@ $rol = $_SESSION['usuario']['rol'];
         <h3 class="text-center">Calendario de Clases</h3>
         <div id="calendar"></div>
     </div>
+
+    <div class="text-center">
+        <?php
+        if ($rol == 1) {
+            echo '<a href="panel_administrador.php" class="btn btn-yellow">Volver</a>';
+        } elseif ($rol == 2) {
+            echo '<a href="panel_profesor.php" class="btn btn-yellow">Volver</a>';
+        } elseif ($rol == 3) {
+            echo '<a href="panel_estudiante.php" class="btn btn-yellow">Volver</a>';
+        }
+        ?>
+    </div>
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

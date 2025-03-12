@@ -15,31 +15,28 @@ $resultado = $conexion->query($sql);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <!--izitoast-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
-    <link rel="stylesheet" href="CSS/form_registro.css">
-    <link rel="stylesheet" href="CSS/listar_usuarios.css">
+    <link rel="stylesheet" href="CSS/formulario_asignaturas.css">
     <title>Asignaturas</title>
 </head>
 
 <body>
-    <div class="card">
-        <h4 class="text-center mb-3">Registrar Asignatura</h4>
+    <div class="container mt-4">
+        <h3 class="text-center">Registrar Asignaturas</h3>
         <form action="../Controladores/registrar_asignatura.php" method="POST">
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Nombre de la Asignatura</label>
-                    <input type="text" name="nombre" class="form-control" required>
-                </div>
+            <div class="form-group">
+                <label class="form-label">Nombre de la Asignatura</label>
+                <input type="text" name="nombre" class="form-control" required>
             </div>
             <div class="text-center p-3">
-                <button type="submit" class="btn btn-primary">Registrar</button>
-                <a href="panel_administrador.php"class="btn btn-primary">Volver</a>
+                <button type="submit" class="btn btn-yellow">Registrar</button>
+                <a href="panel_administrador.php" class="btn btn-yellow">Volver</a>
             </div>
         </form>
 
         <div class="m-auto">
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered">
                 <thead>
-                    <tr class="table-dark">
+                    <tr>
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Acciones</th>

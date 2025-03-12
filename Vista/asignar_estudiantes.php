@@ -25,20 +25,17 @@ $resultado_estudiantes = $conexion->query($sql_estudiantes);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Asignar Clases</title>
 </head>
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 <!--izitoast-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
-<link rel="stylesheet" href="CSS/form_registro.css">
-<link rel="stylesheet" href="CSS/listar_usuarios.css">
+<link rel="stylesheet" href="CSS/asignar.css">
 
 <body>
-
     <div class="container mt-4">
         <h3 class="text-center">Asignar Estudiantes a Clases</h3>
-
         <form action="../Controladores/procesar_asignacion.php" method="POST">
             <div class="mb-3">
                 <label class="form-label">Seleccionar Clase:</label>
@@ -51,7 +48,6 @@ $resultado_estudiantes = $conexion->query($sql_estudiantes);
                     <?php endwhile; ?>
                 </select>
             </div>
-
             <div class="mb-3">
                 <label class="form-label">Seleccionar Estudiantes (Máximo 5):</label>
                 <select name="estudiantes[]" class="form-control" multiple required>
@@ -62,8 +58,8 @@ $resultado_estudiantes = $conexion->query($sql_estudiantes);
                     <?php endwhile; ?>
                 </select>
             </div>
-
-            <button type="submit" class="btn btn-primary">Asignar Estudiantes</button>
+            <button type="submit" class="btn btn-yellow">Asignar Estudiantes</button>
+            <a href="panel_administrador.php" class="btn btn-yellow">Regresar</a>
         </form>
         <hr>
         <h4 class="text-center">Estudiantes Asignados</h4>
@@ -71,38 +67,73 @@ $resultado_estudiantes = $conexion->query($sql_estudiantes);
             <thead>
                 <tr>
                     <th>Clase</th>
+                    <th>Horario</th>
                     <th>Profesor</th>
-                    <th>Estudiantes</th>
+                    <th>Estudiante</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $sql_listar = "SELECT c.id, a.nombre as asignatura, u.nombres as profesor, 
-                       GROUP_CONCAT(e.nombres SEPARATOR ', ') as estudiantes
-                       FROM clases c
-                       INNER JOIN asignaturas a ON c.asignatura_id = a.id
-                       INNER JOIN usuarios u ON c.profesor_id = u.id
-                       LEFT JOIN inscripciones i ON c.id = i.clase_id
-                       LEFT JOIN usuarios e ON i.estudiante_id = e.id
-                       GROUP BY c.id";
+                $sql_listar = "SELECT i.id AS inscripcion_id, c.id AS clase_id, a.nombre AS asignatura, 
+                   CONCAT(u.nombres, ' ', u.apellidos) AS profesor, 
+                   CONCAT(e.nombres, ' ', e.apellidos) AS estudiante, e.id AS estudiante_id, c.hora, c.hora_fin
+                   FROM clases c
+                   INNER JOIN asignaturas a ON c.asignatura_id = a.id
+                   INNER JOIN usuarios u ON c.profesor_id = u.id
+                   INNER JOIN inscripciones i ON c.id = i.clase_id
+                   INNER JOIN usuarios e ON i.estudiante_id = e.id";
                 $resultado_listar = $conexion->query($sql_listar);
 
                 while ($fila = $resultado_listar->fetch_assoc()):
                 ?>
                     <tr>
                         <td><?= $fila["asignatura"] ?></td>
+                        <td><?= $fila["hora"] . " - " . $fila["hora_fin"] ?></td>
                         <td><?= $fila["profesor"] ?></td>
-                        <td><?= $fila["estudiantes"] ?: 'Sin estudiantes asignados' ?></td>
+                        <td><?= $fila["estudiante"] ?></td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmarEliminacion(<?= $fila['inscripcion_id'] ?>)">Eliminar</button>
+                            <form id="formEliminar<?= $fila['inscripcion_id'] ?>" action="../Controladores/eliminar_estudiante.php" method="POST" style="display: none;">
+                                <input type="hidden" name="inscripcion_id" value="<?= $fila['inscripcion_id'] ?>">
+                            </form>
+                        </td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
         </table>
-
     </div>
     <!--izitoast-->
     <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function confirmarEliminacion(inscripcion_id) {
+            iziToast.question({
+                timeout: 20000,
+                close: false,
+                overlay: true,
+                displayMode: 'once',
+                title: '¿Estás seguro?',
+                message: 'Esta acción no se puede deshacer.',
+                position: 'center',
+                buttons: [
+                    ['<button><b>Si, eliminar</b></button>', function(instance, toast) {
+                        document.getElementById('formEliminar' + inscripcion_id).submit();
+                        instance.hide({
+                            transitionOut: 'fadeOut'
+                        }, toast);
+                    }, true],
+                    ['<button>Cancelar</button>', function(instance, toast) {
+                        instance.hide({
+                            transitionOut: 'fadeOut'
+                        }, toast);
+                    }]
+                ]
+            });
+        }
+    </script>
+
     <script>
         <?php if (isset($_SESSION['mensaje'])): ?>
             iziToast.<?= $_SESSION['mensaje']['tipo'] ?>({

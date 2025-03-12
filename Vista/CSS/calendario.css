@@ -1,0 +1,45 @@
+
+.evento-centrado {
+    flex-direction: column;
+    font-size: 12px;
+}
+
+.form-control {
+    width: 200px; 
+}
+
+.form-label {
+    width: 150px; 
+    display: inline-block; 
+}
+
+.mb-3 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; 
+}
+
+.btn {
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+
+.btn.btn-yellow {
+    background-color: #fc0;
+    color: #000; 
+    border: 2px solid #e6b800;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn.btn-yellow:hover {
+    background-color: #e6b800; 
+    color: #fff; 
+    transform: scale(1.05); 
+}
+
+.btn.btn-volver{
+    margin: 20px;
+}

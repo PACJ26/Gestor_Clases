@@ -23,7 +23,9 @@ $rol = "Administrador";
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <!--izitoast-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
-    <link rel="stylesheet" href="CSS/form_administrador.css">
+    <!--ICONOS-->
+    <script src="https://kit.fontawesome.com/fb9c53fb4c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="CSS/paneles.css">
 </head>
 
 <body>
@@ -37,16 +39,37 @@ $rol = "Administrador";
             <a href="../Controladores/cerrarsesion.php" class="btn btn-danger logout-btn">Cerrar Sesión</a>
         </div>
     </div>
-    <div class="content">
-        <h2 class="text-center">Panel de Administrador</h2>
-        <div class="content">
-            <a href="registrar_usuario.php" class="btn btn-success p-4">Registrar Usuario</a>
-            <a href="registrar_asignaturas.php" class="btn btn-success p-4">Registrar Asignatura</a>
-            <a href="listar_usuarios.php" class="btn btn-success p-4">Listar Usuarios</a>
-            <a href="clases.php" class="btn btn-success p-4">Ver Calendario</a>
-            <a href="asignar_estudiantes.php" class="btn btn-success p-4">Asignar Clases</a>
+    <div class="container text-center">
+        <h2 class="text-center mb-4">Panel de Administrador</h2>
+        <div class="d-flex flex-wrap justify-content-center gap-4">
+            <a href="registrar_usuario.php" class="btn btn-yellow p-4 text-center d-flex flex-column align-items-center">
+                <i class="fa-solid fa-address-card fa-2x"></i>
+                <span class="mt-2">Registrar Usuario</span>
+            </a>
+
+            <a href="registrar_asignaturas.php" class="btn btn-yellow p-4 text-center d-flex flex-column align-items-center">
+                <i class="fa-solid fa-book fa-2x"></i>
+                <span class="mt-2">Registrar Asignaturas</span>
+            </a>
+
+            <a href="usuarios_registrados.php" class="btn btn-yellow p-4 text-center d-flex flex-column align-items-center">
+                <i class="fa-solid fa-list fa-2x"></i>
+                <span class="mt-2">Listar Usuarios</span>
+            </a>
+
+            <a href="clases.php" class="btn btn-yellow p-4 text-center d-flex flex-column align-items-center">
+                <i class="fa-solid fa-calendar-days fa-2x"></i>
+                <span class="mt-2">Clases</span>
+            </a>
+
+            <a href="asignar_estudiantes.php" class="btn btn-yellow p-4 text-center d-flex flex-column align-items-center">
+                <i class="fa-solid fa-user-plus fa-2x"></i>
+                <span class="mt-2">Asignar Clases</span>
+            </a>
         </div>
     </div>
+
+
     <!--izitoast-->
     <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
     <!--bootstrap-->

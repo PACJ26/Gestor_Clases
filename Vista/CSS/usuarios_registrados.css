@@ -1,0 +1,51 @@
+body {
+    background-color: #6cf;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    max-width: 1200px;
+    margin: 50px auto;
+}
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.table {
+    width: 100%;
+    background-color: #fff;
+}
+.table th {
+    background-color: #4facfe;
+    text-align: center;
+}
+.table td {
+    text-align: center; 
+}
+.btn {
+    font-weight: bold;
+    padding: 8px 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn.btn-yellow {
+    background-color: #fc0;
+    color: #000; 
+    border: 2px solid #e6b800;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn.btn-yellow:hover {
+    background-color: #e6b800; 
+    color: #fff; 
+    transform: scale(1.05); 
+}
+.btn:hover {
+    transform: translateY(-3px);
+}
