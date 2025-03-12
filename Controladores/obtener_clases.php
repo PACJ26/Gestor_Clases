@@ -20,9 +20,9 @@ $sql = "SELECT c.id, a.nombre as asignatura, c.fecha, c.hora, c.hora_fin, c.esta
         INNER JOIN usuarios u ON c.profesor_id = u.id";
 
 //segun rol mostrar clases
-if ($rol == 2) { // Profesor
+if ($rol == 2) { 
     $sql .= " WHERE c.profesor_id = $usuario_id";
-} elseif ($rol == 3) { // Estudiante
+} elseif ($rol == 3) { 
     $sql .= " INNER JOIN inscripciones i ON c.id = i.clase_id WHERE i.estudiante_id = $usuario_id";
 }
 
