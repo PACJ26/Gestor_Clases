@@ -4,7 +4,12 @@ if (!isset($_SESSION['usuario'])) {
     header('Location: index.php');
     exit();
 }
+
+$rol = $_SESSION['usuario']['rol'];
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -23,6 +28,7 @@ if (!isset($_SESSION['usuario'])) {
 </head>
 
 <body>
+
     <!-- Modal Agrergar-->
     <div class="modal fade" id="modalAgregarClase" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -121,6 +127,9 @@ if (!isset($_SESSION['usuario'])) {
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.js"></script>
     <script src="../Vista/JS/config_sesion.js"></script>
+    <script>
+        var usuarioRol = <?php echo json_encode($rol); ?>;
+    </script>
     <script src="../Vista//JS/calendario.js"></script>
 
 </body>
