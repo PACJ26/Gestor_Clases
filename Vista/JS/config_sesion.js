@@ -1,4 +1,4 @@
-let tiempoInactividad = 10 * 60 * 1000; 
+let tiempoInactividad = 10 * 60 * 1000;
 
     // Función inactividad
     function cerrarSesionPorInactividad() {

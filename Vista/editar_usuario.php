@@ -34,7 +34,7 @@ $resultado_roles = obtenerRoles();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <!-- IziToast -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
-    <link rel="stylesheet" href="CSS/form_registro.css">
+    <link rel="stylesheet" href="CSS/formulario_registro.css">
 </head>
 
 <body>
@@ -92,8 +92,8 @@ $resultado_roles = obtenerRoles();
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-            <a href="listar_usuarios.php" class="btn btn-primary">Volver</a>
+            <button type="submit" class="btn btn-yellow">Guardar Cambios</button>
+            <a href="usuarios_registrados.php" class="btn btn-yellow">Volver</a>
         </form>
     </div>
 

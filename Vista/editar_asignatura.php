@@ -42,7 +42,7 @@ $asignatura = $resultado->fetch_assoc();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <!--izitoast-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
-    <link rel="stylesheet" href="CSS/form_registro.css">
+    <link rel="stylesheet" href="CSS/formulario_registro.css">
 </head>
 
 <body>
@@ -58,8 +58,8 @@ $asignatura = $resultado->fetch_assoc();
                 </div>
             </div>
             <div class="text-center p-3">
-                <button type="submit" class="btn btn-primary">Actualizar</button>
-                <a href="registrar_asignaturas.php" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-yellow">Actualizar</button>
+                <a href="registrar_asignaturas.php" class="btn btn-yellow">Cancelar</a>
             </div>
         </form>
     </div>
